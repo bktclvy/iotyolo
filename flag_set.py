@@ -2,9 +2,10 @@
 import SiOt_connection_tool
 import time
 
-def result_out(check_flag):
-    ST = SiOt_connection_tool.SiOt_TCP("192.168.0.150", 40001)
+ST = SiOt_connection_tool.SiOt_TCP("192.168.0.150", 40001)
 
+def result_out(check_flag, ST = ST):
+    
     if check_flag == 1:
         # 青フラグオン
         response = ST.EtherFlag_change("10000000")
@@ -18,10 +19,9 @@ def result_out(check_flag):
     else:
         return "flag input error"
 
-def check_buttom_flag():
-    ST = SiOt_connection_tool.SiOt_TCP("192.168.1.150", 40001)
+def check_buttom_flag(ST = ST):
     response = ST.FLAG_state_check()
-
+    
     if response[0] == "0":
         return 0
     elif response[0] == "1":
