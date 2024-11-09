@@ -5,15 +5,16 @@ import time
 ST = SiOt_connection_tool.SiOt_TCP("192.168.0.150", 40001)
 
 def result_out(check_flag, ST = ST):
+    ST.EtherFlag_change("00000000")
     
     if check_flag == 1:
         # 青フラグオン
-        response = ST.EtherFlag_change("10000000")
+        ST.EtherFlag_change("10000000")
         return "OK flag ON"
 
     elif check_flag == 2:
         # 赤フラグオン
-        response = ST.EtherFlag_change("01000000")
+        ST.EtherFlag_change("01000000")
         return "NG flag ON"
     
     else:
