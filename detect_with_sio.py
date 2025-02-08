@@ -3,11 +3,11 @@ from ultralytics import YOLO
 import flag_set
 import time
 
-OBJECT = "spoon"
+OBJECT = "ball"
 
 
 # YOLOv8モデルの初期化
-def load_model(model_path='yolov8x.pt'):
+def load_model(model_path='model_- 2 february 2025 9_14 (1).pt'):
     return YOLO(model_path)
 
 # オレンジのカウントを行う関数
@@ -32,6 +32,7 @@ def detect_objects(frame, model, target_class=OBJECT):
 def main():
     model = load_model()  # モデルのロード
     cap = cv2.VideoCapture(0)  # カメラ映像の取得
+
     if not cap.isOpened():
         print("カメラが開けませんでした。")
         return
